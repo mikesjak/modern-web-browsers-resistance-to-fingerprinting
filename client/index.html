@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+        <title>User fingerprinting</title>
+    </head>
+    <body>
+        <h1>Your fingerprints</h1>
+
+        <!-- Name dropdown menu -->
+        <div class="dropdown-container">
+            <label for="userSelection"><b>Choose a name:</b></label>
+            <select class="dropdown-menu" id="userSelection" name="userSelection">
+                <option value="user1">user1</option>
+                <option value="user2">user2</option>
+                <option value="user3">user3</option>
+                <option value="mikesj">mikesj</option>
+                <option value="MacBraveAggressive">MacBraveAggressive</option>
+                <option value="MacBraveClassic">MacBraveClassic</option>
+                <option value="MacFirefoxAggressive">MacFirefoxAggressive</option>
+                <option value="MacFirefoxClassic">MacFirefoxClassic</option>
+                <option value="MacChrome">MacChrome</option>
+                <option value="MacTor">MacTor</option>
+                <option value="MacSafariPrivate">MacSafariPrivate</option>
+                <option value="MacSafari">MacSafari</option>
+                <option value="WinBraveAggressive">WinBraveAggressive</option>
+                <option value="WinBraveClassic">WinBraveClassic</option>
+                <option value="WinFirefoxAggressive">WinFirefoxAggressive</option>
+                <option value="WinFirefoxClassic">WinFirefoxClassic</option>
+                <option value="WinChrome">WinChrome</option>
+                <option value="WinTor">WinTor</option>
+                <option value="WinNBBraveAggressive">WinNBBraveAggressive</option>
+                <option value="WinNBBraveClassic">WinNBBraveClassic</option>
+                <option value="WinNBFirefoxAggressive">WinNBFirefoxAggressive</option>
+                <option value="WinNBFirefoxClassic">WinNBFirefoxClassic</option>
+                <option value="WinNBChrome">WinNBChrome</option>
+                <option value="WinNBTor">WinNBTor</option>
+                <option value="UbuntuBraveAggressive">UbuntuBraveAggressive</option>
+                <option value="UbuntuBraveClassic">UbuntuBraveClassic</option>
+                <option value="UbuntuFirefoxAggressive">UbuntuFirefoxAggressive</option>
+                <option value="UbuntuFirefoxClassic">UbuntuFirefoxClassic</option>
+                <option value="UbuntuChrome">UbuntuChrome</option>
+                <option value="UbuntuTor">UbuntuTor</option>
+            </select>
+            <button onclick="storeSelection()">Send</button>
+        </div>
+
+        
+
+            <!-- Browser and device attributes -->
+            <div class="control-group">
+                <button class="toggleButton" data-target="UserDataDiv">Browser and Device Attributes</button>
+                <div id="UserDataDiv" class="content-div" style="display: none;">
+                    <div id="userDataDisplay"></div>
+                </div>
+            </div>
+
+            <!-- Media Capabilities -->
+            <div class="control-group">
+                <button class="toggleButton" data-target="MediaCapabilitiesDiv">Media Capabilities</button>
+                <div id="MediaCapabilitiesDiv" class="content-div" style="display: none;">
+                    <div id="MediaCapabilitiesDisplay"></div>
+                </div>
+            </div>
+
+            <!-- Plugins -->
+            <div class="control-group">
+                <button class="toggleButton" data-target="PluginsDiv">Installed Plugins</button>
+                <div id="PluginsDiv" class="content-div" style="display: none;">
+                    <div id="PluginsDisplay"></div>
+                </div>
+            </div>
+
+            <!-- Fonts -->
+            <div class="control-group">
+                <button class="toggleButton" data-target="FontsDiv">Fonts</button>
+                <div id="FontsDiv" class="content-div" style="display: none;">
+                    <div id="FontsDisplay"></div>
+                </div>
+            </div>
+
+            <!-- Canvas -->
+            <div class="control-group">
+                <button class="toggleButton" data-target="CanvasDiv">Browser Canvas Fingerprint</button>
+                <div id="CanvasDiv" class="content-div" style="display: none;">
+                    <div id="canvasDisplay">
+                        <div id="textCanvas"></div>
+                        <div id="geomCanvas"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio -->
+            <div class="control-group">
+                <button class="toggleButton" data-target="audioDiv">Audio Fingerprint</button>
+                <div id="audioDiv" class="content-div" style="display: none;">
+                    <div id="audioDisplay">
+                        <div id="audioCanvas"></div>
+                        <div id="audioHash"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+        <!-- FP Results -->
+        <div class="control-group">
+            <button class="toggleButton" data-target="resultsDiv">Fingerprint Results</button>
+            <div id="resultsDiv" class="content-div" style="display: none;">
+                <div id="resultsDisplay">
+                    <div id="naiveResultDiv"></div>
+                    <div id="complexResultDiv"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="assets/manager.js"></script>
+    <script src="assets/buttons.js"></script>
+    <script src="assets/browser.js"></script>
+    <script src="assets/canvas.js"></script>
+    <script src="assets/device.js"></script>
+    <script src="assets/attributes.js"></script>
+    <script src="assets/adblock.js"></script>
+    <script src="assets/hash.js"></script>
+    <script src="assets/audio.js"></script>
+    <script src="assets/menu.js"></script>
+    <script src="assets/mediaCapabilities.js"></script>
+    <script src="assets/plugins.js"></script>
+    <script src="assets/fonts.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</html>

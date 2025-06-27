@@ -1,0 +1,15 @@
+blinker
+click
+flask
+flask_cors
+gunicorn
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
+pandas
+ipykernel
+matplotlib
+seaborn
+scikit-learn
+graphviz
