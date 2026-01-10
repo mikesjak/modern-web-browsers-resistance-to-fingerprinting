@@ -1,95 +1,117 @@
-# Browser-Fingerprinting-Security-Measures
+# Modern Web Browsers' Resistance to Fingerprinting
 
-This project is a result of my bachelors thesis.
-It contains a system for collecting, storing, and analysing browser fingerprint data in order to evaluate the effectiveness of anti-fingerprinting mechanisms.
+[![Thesis Grade](https://img.shields.io/badge/Thesis_Grade-A-success)](https://dspace.cvut.cz/handle/10467/123963)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-Project also consists of analysis of collected data from 5 browsers.
-- Google Chrome
-- Mozilla Firefox
-- Apple Safari
-- Brave Browser
-- Tor Browser
+This repository contains the source code, experimental data, and analysis tools developed for the Bachelor's thesis **"Modern Web Browsers' Resistance to Fingerprinting"**.
 
-My bachelors thesis is listed <a href="https://dspace.cvut.cz/handle/10467/123963">here</a>.
-The thesis was graded A, A.
+The project implements a system for collecting, storing, and analyzing browser fingerprint data to evaluate the effectiveness of anti-fingerprinting mechanisms. It focuses on analyzing the consistency and uniqueness of fingerprints across different browser configurations and identifying the efficiency of randomization techniques.
 
-## Setup Instructions
+**Thesis Link:** [CTU Digital Library (DSpace)](https://dspace.cvut.cz/entities/publication/fc3a45e6-0ebc-4c10-8bc6-8a2cea268318)
 
-1. Create virtual environment and activate it
-``` python
-python3 -m venv env
-source env/bin/activate
-```
+## Project Overview
 
-2. Install all dependencies
-``` python
-pip install -r requirements.txt
-```
+The system consists of a client-side data collector, a server-side storage and processing unit, and a suite of analytical tools. The research utilizes a dataset collected from the following browsers:
 
-3. Enter the client directory and run python server to host the website
-``` python
-cd client
-python3 -m http.server 8000
-```
+* **Google Chrome**
+* **Mozilla Firefox**
+* **Apple Safari**
+* **Brave Browser**
+* **Tor Browser**
 
-4. Enter the server directory and run Server-side script
-``` python
-cd server
-python3 receiver.py
-```
+## Repository Structure
 
-5. Change the IP address if necessary
+### Server Modules (`/server`)
+The core backend logic handles data ingestion, user identification, and specific entropy tests.
 
-### Where to change IP address
-`ALWAYS USE HTTP://`
+| Module | Description |
+| :--- | :--- |
+| `receiver.py` | Main entry point handling HTTP communication. |
+| `user_manager.py` | Manages user session persistence and retrieval. |
+| `data_manager.py` | Handles database operations and data storage. |
+| `naive.py` | Implements the **Naive** user detection algorithm. |
+| `complex.py` | Implements the **Complex** fingerprinting detection algorithm. |
+| `farbling.py` | Orchestrates randomization (farbling) tests. |
+| `farbling_*.py` | Specific modules for CPU, Memory, and Resolution randomization analysis. |
 
-browser.js
-- getIpAddress()
+### Analysis Notebooks (`/notebooks`)
+Jupyter notebooks containing statistical analysis and visualizations of the collected dataset.
 
-device.js 
-- getIpAddress()
+| Notebook | Description |
+| :--- | :--- |
+| `brave_profiles.ipynb` | Analysis of distinct Brave Browser profiles. |
+| `brave.ipynb` | General analysis of Brave Browser fingerprinting protections. |
+| `firefox.ipynb` | Analysis of Mozilla Firefox anti-fingerprinting measures. |
+| `safari.ipynb` | Analysis of Apple Safari (ITP) effectiveness. |
+| `tor.ipynb` | Evaluation of Tor Browser's uniformity. |
+| `confusion_matrix.ipynb` | visualization of identification algorithm precision. |
+| `decision_tree.ipynb` | Implementation of a Decision Tree classifier for user identification. |
 
-headers.js
-- getAcceptHeaders()
+> **Note:** Additional simulation scripts (`simulate_complex.py`, `simulate_naive.py`) are located in the `analysis` directory.
 
-manager.js
-- manage()
+## Installation & Deployment
 
-## Analysis Notebooks
+### Prerequisites
+* Python 3.8+
+* pip packet manager
 
-This thesis includes analysis of fingerprint data collected from five browsers.
+### Setup Steps
 
-| Module name   | Description        |
-|--------|---------------|
-| brave_profiles.ipynb | Analysis of Brave profiles data |
-| brave.ipynb | Analysis of Brave data  |
-| confusion_matrix.ipynb | Illustration of precision of identification algorithms |
-| decision_tree.ipynb | Decision tree classifier |
-| firefox.ipynb | Analysis of Mozilla Firefox data|
-| safari.ipynb | Analysis of Apple Safari data |
-| tor.ipynb | Analysis of Tor Browser |
+1.  **Environment Setup**
+    Create and activate a virtual environment to isolate dependencies.
+    ```bash
+    python3 -m venv env
+    source env/bin/activate  # On Windows use: env\Scripts\activate
+    ```
 
-Additional simulation scripts can be found in the [analysis](analysis) directory:
-- simulate_complex.py – Simulates the Complex algorithm
-- simulate_naive.py – Simulates the Naive algorithm
+2.  **Dependencies**
+    Install the required Python packages.
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-## Server Modules
+3.  **Client Deployment**
+    Navigate to the client directory and serve the static files.
+    ```bash
+    cd client
+    python3 -m http.server 8000
+    ```
 
-The server consists of 10 Python modules responsible for processing, storing, and analysing fingerprint data.
+4.  **Server Deployment**
+    Navigate to the server directory and start the receiver script.
+    ```bash
+    cd server
+    python3 receiver.py
+    ```
 
+## ⚙️ Configuration
 
-| Module name   | Description        |
-|--------|---------------|
-| complex.py | Complex fingerprinting detection algorithm |
-| data_manager.py | Data managing |
-| farbling_cpu_count.py | CPU randomisation test |
-| farbling_device_memory.py | Device memory randomisation test |
-| farbling_resolution.py | Screen resolution randomisation test |
-| farbling.py | Farbling test managing |
-| naive.py | Naive user detection algorithm |
-| receiver.py | Communication handling |
-| timestamp.py | Formating current time |
-| user_manager.py | Storing and loading users |
+To deploy the system in a network environment (non-localhost), the API endpoint addresses must be updated to match the server's host IP.
+
+**Warning:** Always use the `http://` protocol.
+
+Please update the `getIpAddress()` or relevant connection methods in the following files:
+
+* `client/browser.js`
+* `client/device.js`
+* `client/headers.js` (specifically `getAcceptHeaders`)
+* `client/manager.js` (specifically `manage`)
 
 ## Notes
-All fingerprinting tests assume a local setup, cross-origin restrictions may apply in production environments.
+
+* **Local Execution:** All fingerprinting tests are designed for a local setup. Cross-Origin Resource Sharing (CORS) policies may restrict functionality in production environments without additional header configuration.
+
+## Citation
+
+If you use this code or dataset in your research, please cite the thesis as follows:
+
+```bibtex
+@mastersthesis{FingerprintingThesis,
+  author  = {Mikeš, Jakub},
+  title   = {Modern Web Browsers' Resistance to Fingerprinting},
+  school  = {Czech Technical University in Prague},
+  year    = {2025},
+  type    = {Bachelor's Thesis},
+  url     = {https://dspace.cvut.cz/handle/10467/123963}
+}
+```
