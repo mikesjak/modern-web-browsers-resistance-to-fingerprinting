@@ -84,7 +84,7 @@ Jupyter notebooks containing statistical analysis and visualizations of the coll
     python3 receiver.py
     ```
 
-## ⚙️ Configuration
+## Configuration
 
 To deploy the system in a network environment (non-localhost), the API endpoint addresses must be updated to match the server's host IP.
 
