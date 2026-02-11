@@ -5,7 +5,9 @@
 
 This repository contains the source code, experimental data, and analysis tools developed for the Bachelor's thesis **"Modern Web Browsers' Resistance to Fingerprinting"**.
 
-The project implements a system for collecting, storing, and analyzing browser fingerprint data to evaluate the effectiveness of anti-fingerprinting mechanisms. It focuses on analyzing the consistency and uniqueness of fingerprints across different browser configurations and identifying the efficiency of randomization techniques.
+The project implements a system for collecting, storing, and analyzing browser fingerprint data to evaluate the effectiveness of anti-fingerprinting mechanisms. It focuses on analyzing the consistency and uniqueness of fingerprints across different browser configurations and identifying the efficiency of randomization techniques. 
+
+Live demo can be seen on my [web page](https://www.jakubmikes.cz).
 
 **Thesis Link:** [CTU Digital Library (DSpace)](https://dspace.cvut.cz/entities/publication/fc3a45e6-0ebc-4c10-8bc6-8a2cea268318)
 
